@@ -32,6 +32,8 @@ namespace Pulsar.Customers.Api
         
         services.AddControllers();
 
+
+        //test
           
 
             // Loads FluentValidation
