@@ -6,6 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.WebSockets;
+using Pulsar.Inventory.Api.Models.InventoryItems;
 
 namespace Pulsar.Inventory.Api.ServiceInstallers.Installers
 {
@@ -78,9 +82,35 @@ namespace Pulsar.Inventory.Api.ServiceInstallers.Installers
 
             context.Database.EnsureCreated();
 
-            //if (context.<dbset>.FirstOrDefault() == null)
-            //{
-            //}
+            if (context.InventoryItems.FirstOrDefault() == null)
+            {
+                var IntentoryList = new List<InventoryItem>()
+                {
+                    new InventoryItem()
+                    {
+                        Id = new Guid("0e152be9-4502-4264-b42e-9cab6e5fb42e"),
+                        CurrentInventoryLevel = 50000
+                    },
+                    new InventoryItem()
+                    {
+                        Id = new Guid("c6804f17-bf93-4038-a2c7-587e47797d47"),
+                        CurrentInventoryLevel = 900000
+                    },
+                    new InventoryItem()
+                    {
+                        Id = new Guid("c1f5b753-d111-4ca1-a8c8-a4c32942a2f6"),
+                        CurrentInventoryLevel = 212233
+                    },
+                    new InventoryItem()
+                    {
+                        Id = new Guid("a63a4015-679f-4953-8ed1-a53792510017"),
+                        CurrentInventoryLevel = 0
+                    }
+                };
+
+                context.InventoryItems.AddRange(IntentoryList);
+                context.SaveChanges();
+            }
         }
     }
 }

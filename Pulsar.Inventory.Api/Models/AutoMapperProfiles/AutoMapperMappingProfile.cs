@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Pulsar.Inventory.Api.Models.InventoryItems;
 
 namespace Pulsar.Inventory.Api.Models.AutoMapperProfiles
 {
@@ -9,7 +10,7 @@ namespace Pulsar.Inventory.Api.Models.AutoMapperProfiles
     {
         public AutoMapperMappingProfile()
         {
-            //CreateMap<string, string>().ReverseMap();
+            CreateMap<InventoryItem, InventoryItemViewModel>().ReverseMap();
 
         }
     }

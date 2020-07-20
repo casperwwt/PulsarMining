@@ -8,6 +8,7 @@ using Pulsar.Inventory.Api.Data.Services;
 using Pulsar.Inventory.Api.ServiceInstallers.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pulsar.Inventory.Api.Models.InventoryItems;
 
 namespace Pulsar.Inventory.Api.ServiceInstallers.Installers
 {
@@ -17,8 +18,8 @@ namespace Pulsar.Inventory.Api.ServiceInstallers.Installers
         {
             // Configures services for saving to DB
 
-            // services.AddScoped<IRepositoryBase<BaseDbEntity>, RepositoryBase<BaseDbEntity>();
-            // services.AddScoped<IPersistentStorageService<ViewModel, BaseDbEntity>, PersistentStorageService<ViewModel, BaseDbEntity>();
+             services.AddScoped<IRepositoryBase<InventoryItem>, RepositoryBase<InventoryItem>>();
+             services.AddScoped<IPersistentStorageService<InventoryItemViewModel, InventoryItem>, PersistentStorageService<InventoryItemViewModel, InventoryItem>>();
         }
     }
 }

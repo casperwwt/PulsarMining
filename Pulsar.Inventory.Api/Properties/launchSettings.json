@@ -9,13 +9,12 @@
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "CP_ASPCORE_Template": {
+    "Pulsar.Inventory.Api": {
       "commandName": "Project",
-      "launchUrl": "weatherforecast",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:5901;http://localhost:5900"
+      "applicationUrl": "https://localhost:5911;http://localhost:5910"
     }
   }
 }
