@@ -7,5 +7,6 @@ namespace Pulsar.Inventory.Api.Data.BaseModels
     {
         [Key]
         public Guid Id { get; set; }
+
     }
 }

@@ -43,7 +43,7 @@ namespace Pulsar.Customers.Api.ServiceInstallers.Installers
                 }
                 catch (Exception e)
                 {
-                    logger.LogCritical("CRITICAL ERROR: Time Server configured but not reachable. Startup aborted.");
+                    logger.LogCritical($"CRITICAL ERROR: Time Server configured but not reachable. Startup aborted. {e.Message}");
                     throw new Exception("CRITICAL ERROR: Time Server configured but not reachable. Startup aborted.");
                 }
             }

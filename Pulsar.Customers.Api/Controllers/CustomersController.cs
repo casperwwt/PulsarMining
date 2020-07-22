@@ -98,7 +98,7 @@ namespace Pulsar.Customers.Api.Controllers
                 return CreatedAtRoute("GetCustomerId", new CustomerViewModel {Id = newCustomer},
                     newCustomer.ToString());
             }
-            catch (Exception e)
+            catch 
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
@@ -123,7 +123,7 @@ namespace Pulsar.Customers.Api.Controllers
                 return Ok();
 
             }
-            catch (Exception e)
+            catch 
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }

@@ -20,6 +20,15 @@ namespace Pulsar.Admin.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                    builder.SetIsOriginAllowed(_ => true)
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
             services.AddControllers();
 
             // Loads FluentValidation
@@ -36,6 +45,7 @@ namespace Pulsar.Admin.Api
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
+            app.UseCors();
 
 
             app.UseHttpsRedirection();

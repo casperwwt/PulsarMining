@@ -1,10 +1,10 @@
-using Pulsar.CoreElements.Api.ServiceInstallers;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pulsar.CoreElements.Api.ServiceInstallers;
 
 namespace Pulsar.CoreElements.Api
 {
@@ -20,12 +20,20 @@ namespace Pulsar.CoreElements.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                    builder.SetIsOriginAllowed(_ => true)
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
+
             services.AddControllers();
 
             // Loads FluentValidation
 
             services.AddMvc().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
-
 
             // Auto loads IServiceInstaller inherited
             services.AddConfiguredServices(Configuration);
@@ -36,7 +44,7 @@ namespace Pulsar.CoreElements.Api
         {
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
-
+            app.UseCors();
 
             app.UseHttpsRedirection();
 

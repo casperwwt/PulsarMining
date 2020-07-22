@@ -1,11 +1,10 @@
 using FluentValidation.AspNetCore;
-using Pulsar.Customers.Api.ServiceInstallers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Cors;
+using Pulsar.Customers.Api.ServiceInstallers;
 
 namespace Pulsar.Customers.Api
 {
@@ -29,12 +28,8 @@ namespace Pulsar.Customers.Api
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
-        
-        services.AddControllers();
 
-
-        //test
-          
+            services.AddControllers();
 
             // Loads FluentValidation
 
@@ -50,13 +45,9 @@ namespace Pulsar.Customers.Api
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
             app.UseCors();
 
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            
-
 
             app.UseAuthorization();
 

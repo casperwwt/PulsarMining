@@ -60,7 +60,7 @@ namespace Pulsar.CoreElements.Api.ServiceInstallers.Installers
                 }
                 catch (Exception e)
                 {
-                    logger.LogCritical("CRITICAL ERROR: Application is set to Demo Mode but cannot connect to database.");
+                    logger.LogCritical($"CRITICAL ERROR: Application is set to Demo Mode but cannot connect to database:  {e.Message}" );
                 }
             }
         }
